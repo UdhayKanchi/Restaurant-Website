@@ -1,0 +1,68 @@
+.section {
+  padding: 20px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.section h2 {
+  font-size: 2em;
+  margin-bottom: 15px;
+  color: #1a1a1a;
+}
+
+.room-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 50px;
+  margin-top: 30px;
+}
+
+.room {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px gold(0, 0, 0, 0.8);
+  transition: transform 0.3s ease;
+  
+}
+
+.room:hover img {
+    transform: scale(1.02);
+    transition: transform 0.3s ease;
+}
+
+
+.room img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.room a {
+  display: block;
+  padding: 20px;
+  color: inherit;
+  text-decoration: none;
+}
+
+.room h3 {
+  margin-bottom: 10px;
+  font-size: 1.3em;
+  color: #1a1a1a;
+}
+
+.book-btn {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 10px 20px;
+  background: #007bff;
+  color: white;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.book-btn:hover {
+  background: #0056b3;
+}

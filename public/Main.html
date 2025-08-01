@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="main.css">
+  <title>Book Now</title>
+  <style>
+    .response-message {
+      margin-top: 10px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <center>
+
+    <div class="section" id="booking">
+      <h2>Book Your Stay</h2>
+      <form id="bookingForm" class="booking-form">
+        <label for="roomType">Room Type:</label>
+        <select id="roomType" name="roomType" required>
+          <option value="" disabled selected>Select Room Type</option>
+          <option value="Classic Room">Classic Room - $250/night</option>
+          <option value="Superior Room">Superior Room - $400/night</option>
+          <option value="Deluxe Room">Deluxe Room - $600/night</option>
+          <option value="Presidential Suite">Presidential Suite - $800/night</option>
+          <option value="Junior Suite">Junior Suite - $1000/night</option>
+          <option value="Kindle Suite">Kindle Suite - $1300/night</option>
+          <option value="Royal Suite">Royal Suite - $1600/night</option>
+          <option value="Beach View Room">Beach View Room - $1700/night</option>
+        </select>
+
+        <label for="checkin">Check-in:</label>
+        <input type="date" id="checkin" name="checkin" required />
+
+        <label for="checkout">Check-out:</label>
+        <input type="date" id="checkout" name="checkout" required />
+
+        <label for="guests">Guests:</label>
+        <input type="number" id="guests" name="guests" min="1" max="10" required />
+
+        <button type="submit">Book Now</button>
+      </form>
+      <p id="bookingResponse" class="response-message"></p>
+    </div>
+
+    <div class="section contact-section" id="contact">
+      <h2>Contact Us</h2>
+      <p>Email: info@KindleHouseHotels.com</p>
+      <p>Phone: +123 456 7890</p>
+      <p>Address: 123 Luxury Lane, Paradise City</p>
+    </div>
+
+    <div class="main-footer">
+      <p>&copy; 2025 Kindle House Hotels. All rights reserved.</p>
+    </div>
+  </center>
+
+  <button onclick="goBack()">Go Back</button>
+
+  <script>
+    function goBack() {
+      window.history.back();
+    }
+
+    const bookingForm = document.getElementById('bookingForm');
+    const bookingResponse = document.getElementById('bookingResponse');
+
+    bookingForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const formData = {
+        roomType: bookingForm.roomType.value,
+        checkin: bookingForm.checkin.value,
+        checkout: bookingForm.checkout.value,
+        guests: bookingForm.guests.value
+      };
+
+      try {
+        const response = await fetch('/submit-booking', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(formData)
+        });
+
+        const result = await response.text();
+        bookingResponse.textContent = result;
+        bookingResponse.style.color = '#28a745'; // green
+        bookingForm.reset();
+      } catch (error) {
+        bookingResponse.textContent = '❌ Error submitting booking.';
+        bookingResponse.style.color = 'red';
+      }
+    });
+  </script>
+</body>
+</html>

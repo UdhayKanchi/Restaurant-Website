@@ -1,0 +1,154 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.page-landing {
+  background: url("https://www.ahstatic.com/photos/5451_ho_00_p_1024x768.jpg") no-repeat center center fixed;
+  background-size: cover;
+  overflow-x: hidden;
+  color: #333;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+.main-header {
+  padding: 20px 0;
+  text-align: center;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.main-title {
+  color: greenyellow;
+  margin-bottom: 10px;
+}
+
+.nav-list {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 30px;
+  padding: 0 10px;
+}
+
+.nav-link {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+  color: #f8c12c;
+}
+
+@media (max-width: 768px) {
+  .nav-list {
+    gap: 15px;
+  }
+
+  .nav-link {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .nav-list {
+    gap: 10px;
+  }
+
+  .nav-link {
+    font-size: 0.85rem;
+  }
+}
+
+.hero-section {
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+  text-align: center;
+  padding: 0 20px;
+}
+
+.quote {
+  color: chartreuse;
+  font-size: 2rem;
+}
+
+.tagline {
+  color: rgb(12, 13, 12);
+  font-weight: 200;
+  font-size: 1.2rem;
+}
+
+.hero-btn {
+  margin-top: 20px;
+  background-color: #f8c12c;
+  color: black;
+  padding: 10px 20px;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 5px;
+  transition: background 0.3s;
+}
+
+.hero-btn:hover {
+  background-color: #d4a017;
+}
+
+.loader-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  animation: fadeOut 3s forwards;
+}
+
+.loader {
+  border: 8px solid #f3f3f3;
+  border-top: 8px solid #d4a373;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  animation: spin 1s linear infinite;
+}
+
+.content {
+  opacity: 0;
+  animation: fadeIn 1s forwards;
+  animation-delay: 1s;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes fadeOut {
+  0% { opacity: 1; }
+  100% { opacity: 0; visibility: hidden; }
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
